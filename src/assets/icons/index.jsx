@@ -1,3 +1,5 @@
+import { grey } from "../../theme/colors"
+
 export const MenuIcon = () => (
   <svg
     width="24"
@@ -200,5 +202,23 @@ export const ArrowRight = () => {
         </defs>
       </svg>
     </>
+  )
+}
+
+export const CheckMark = ({isAvailable}) => {
+  const color = isAvailable ? "#3BAA35" : grey[600]
+  return (
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g clipPath="url(#clip0_401_9024)">
+        <path d="M14.6666 7.38625V7.99958C14.6658 9.4372 14.2003 10.836 13.3395 11.9875C12.4787 13.1389 11.2688 13.9812 9.89016 14.3888C8.51154 14.7965 7.03809 14.7475 5.68957 14.2493C4.34104 13.7511 3.18969 12.8303 2.40723 11.6243C1.62476 10.4183 1.25311 8.99163 1.3477 7.55713C1.44229 6.12263 1.99806 4.75713 2.93211 3.6643C3.86615 2.57146 5.12844 1.80984 6.53071 1.49301C7.93298 1.17619 9.4001 1.32114 10.7133 1.90625" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M14.6667 2.66699L8 9.34032L6 7.34032" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      </g>
+      <defs>
+        <clipPath id="clip0_401_9024">
+          <rect width="16" height="16" fill="white" />
+        </clipPath>
+      </defs>
+    </svg>
+
   )
 }

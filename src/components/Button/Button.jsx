@@ -88,3 +88,10 @@ export const SecondaryButtonIcon = ({ children, icon, sx, ...props }) => {
     </Button>
   )
 }
+export const CountButton = ({ children, sx, ...props }) => {
+  return (
+    <Button sx={{ minWidth: 'unset', border: '1px solid #D1D1D3', borderRadius: 0, p: '8.7px', ...sx }} {...props} variant="outlined">
+      {children}
+    </Button>
+  )
+}

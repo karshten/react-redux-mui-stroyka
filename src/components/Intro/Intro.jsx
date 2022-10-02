@@ -25,13 +25,13 @@ export const Intro = React.memo(({ props, sx }) => {
         backgroundSize: "cover",
         minHeight: "232px",
         padding: "40 0 60px",
-        p: 0,
+        p: '0 !important',
         maxWidth: '1360px',
         m: 'auto',
         ...sx,
       }}
     >
-      <Container sx={{ maxWidth: "1160px", p: 0,  }}>
+      <Container sx={{ maxWidth: "1160px", p: '0 !important',  }}>
         <List>
           {props?.path?.map((item, idx) => (
             <ListItem key={item.point} sx={pathItemStyles}>
