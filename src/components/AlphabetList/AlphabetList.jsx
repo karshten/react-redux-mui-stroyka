@@ -7,7 +7,6 @@ import arrowRight from "icons/arrow-right-16.svg"
 
 export const AlphabetList = React.memo(
   ({ list }) => {
-
     return (
       <div>
         <KeyBoard />
