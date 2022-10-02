@@ -1,6 +1,5 @@
 import React from "react"
 import {
-  AppBar,
   Box,
   Typography,
   Container,
@@ -8,10 +7,32 @@ import {
   ListItem,
   ListItemText,
 } from "@mui/material"
+import { Link } from 'react-router-dom'
 import map from "icons/map.svg"
 import { grey } from "theme/colors"
 
-const navItems = ["Бренды", "Доставка", "Возврат", "Документация", "Контакты"]
+const navItems = [
+  {
+    name: "Бренды",
+    path: "/brands",
+  },
+  {
+    name: "Доставка",
+    path: "/delivery"
+  },
+  {
+    name: "Возврат",
+    path: "/refund"
+  },
+  {
+    name: "Документация",
+    path: "/docs"
+  },
+  {
+    name: "Контакты",
+    path: "/contacts"
+  }
+]
 
 export const TopHeader = () => {
   return (
@@ -28,15 +49,16 @@ export const TopHeader = () => {
           >
             Москва
           </Typography>
-          <List sx={{ display: "flex", p: 0 }}>
+          <List sx={{ display: "flex", p: 0, "& a": { textDecoration: 'none' } }}>
             {navItems.map((item) => (
-              <ListItem
-                sx={{ ml: 3, cursor: "pointer" }}
-                key={item}
-                disablePadding
-              >
-                <ListItemText primary={item} sx={{ color: grey[800] }} />
-              </ListItem>
+              <Link to={item?.path} key={item.name}>
+                <ListItem
+                  sx={{ ml: 3, cursor: "pointer" }}
+                  disablePadding
+                >
+                  <ListItemText primary={item.name} sx={{ color: grey[800] }} />
+                </ListItem>
+              </Link>
             ))}
           </List>
         </Box>
