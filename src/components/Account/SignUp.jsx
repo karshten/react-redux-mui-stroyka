@@ -1,20 +1,8 @@
 import React, { useState } from 'react'
-import { Box, Typography, TextField } from "@mui/material"
+import { Box, Typography } from "@mui/material"
 import { white, dark } from 'theme/colors'
 import { PrimaryButton } from '../Button/Button'
 import { AccountInput } from './AccountInput'
-
-const inputStyles = {
-  width: '100%',
-  m: '8px 0 16px',
-  outline: dark[600],
-  "& input": {
-    p: "12px 16px",
-  },
-  "& .Mui-focused fieldset": {
-    borderColor: `${dark[600]} !important`
-  }
-}
 
 export const SignUp = ({ closeSignUp }) => {
 
@@ -83,7 +71,7 @@ export const SignUp = ({ closeSignUp }) => {
           </Typography>}
           <Box sx={{ display: 'flex', width: '100%', gap: 2 }}>
             <AccountInput
-              type="text"
+              inputType="text"
               placeholder='Богдан'
               boxWidth='50%'
               value={name}
@@ -91,7 +79,7 @@ export const SignUp = ({ closeSignUp }) => {
               label="Имя"
             />
             <AccountInput
-              type="email"
+              inputType="email"
               placeholder='youname@gmail.com'
               boxWidth='50%'
               value={email}
@@ -101,7 +89,7 @@ export const SignUp = ({ closeSignUp }) => {
           </Box>
           <Box sx={{ display: 'flex', width: '100%', gap: 2 }}>
             <AccountInput
-              type="password"
+              inputType="password"
               placeholder=''
               boxWidth='50%'
               value={password}
@@ -109,7 +97,7 @@ export const SignUp = ({ closeSignUp }) => {
               label="Пароль"
             />
             <AccountInput
-              type="password"
+              inputType="password"
               placeholder=''
               boxWidth='50%'
               value={confirmPassword}

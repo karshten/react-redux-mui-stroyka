@@ -17,6 +17,7 @@ import { LogoIcon } from "../../assets/icons"
 import { Login } from "../Account/Login"
 import { useState } from "react"
 import { SignUp } from "../Account/SignUp"
+import { useNavigate } from "react-router-dom"
 
 const stylesInput = {
   "& > div": {
@@ -43,12 +44,13 @@ const stylesInput = {
 
 export const MiddleHeader = () => {
   const navItems = [
-    { label: "Профиль", icon: userIcon, isAuthtorized: false },
-    { label: "Заказы", icon: orderIcon },
-    { label: "Корзина", icon: basketIcon },
+    { label: "Профиль", icon: userIcon, isAuthtorized: true, path: '/personal-area' },
+    { label: "Заказы", icon: orderIcon, path: '/orders' },
+    { label: "Корзина", icon: basketIcon, path: '/basket' },
   ]
   const [loginPopupOpen, setLoginPopupOpen] = useState(false)
   const [signUpPopupOpen, setSignUpPopupOpen] = useState(false)
+  const navigate = useNavigate()
 
   return (
     <Box py={2}>
@@ -56,7 +58,7 @@ export const MiddleHeader = () => {
         {loginPopupOpen && <Login closeLogin={setLoginPopupOpen} openSignUp={setSignUpPopupOpen} />}
         {signUpPopupOpen && <SignUp  closeSignUp={setSignUpPopupOpen}/>}
         <Box display="flex" alignItems="center" justifyContent="space-between">
-          <LogoIcon />
+          <LogoIcon onClick={() => navigate('/')}/>
           <Box display="flex">
             <Box display="flex" alignItems="center">
               <PrimaryButtonIcon icon={<MenuIcon />}>Каталог</PrimaryButtonIcon>
@@ -74,7 +76,7 @@ export const MiddleHeader = () => {
               <List sx={{ display: "flex" }}>
                 {navItems.map((item, idx) => (
                   <ListItem
-                    onClick={() => idx === 0 && !item?.isAuthtorized ? setLoginPopupOpen(true) : null}
+                    onClick={() => idx === 0 && !item?.isAuthtorized ? setLoginPopupOpen(true) : navigate(item.path)}
                     key={item.label}
                     sx={{
                       display: "flex",

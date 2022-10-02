@@ -1,10 +1,10 @@
-import { Box } from "@mui/material"
+import { Box, Container } from "@mui/material"
 import { Header } from "components"
 import { Route, Routes } from "react-router-dom"
 import { Footer } from "./components"
-import { Brands, Delivery, Home } from "./pages"
+import { Brands, Delivery, Home, PersonalArea } from "./pages"
 
-const NotFound = () => <h1>tets</h1>
+const NotFound = () => <Container sx={{ maxWidth: '1160px' }}><h1>NotFound</h1></Container>
 
 function App() {
   return (
@@ -14,6 +14,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/delivery" element={<Delivery />} />
         <Route path="/brands" element={<Brands />} />
+        <Route path="/personal-area" element={<PersonalArea />} />
         {/* <Route path="/docs" element={<Documentation />} /> */}
         <Route path="*" element={<NotFound />} />
       </Routes>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Box, Typography, TextField } from "@mui/material"
+import { Box, Typography } from "@mui/material"
 import { white, dark, grey } from 'theme/colors'
 import { PrimaryButton } from '../Button/Button'
 import { AccountInput } from './AccountInput'
@@ -57,7 +57,7 @@ export const Login = ({ closeLogin, openSignUp }) => {
           component='form'
           onSubmit={(e) => handleSubmit(e)}>
           <AccountInput
-            type="email"
+            inputType="email"
             placeholder='youname@email.com'
             boxWidth='100%'
             value={email}
@@ -65,7 +65,7 @@ export const Login = ({ closeLogin, openSignUp }) => {
             label="E-mail"
           />
           <AccountInput
-            type="password"
+            inputType="password"
             placeholder=''
             boxWidth='100%'
             value={password}
