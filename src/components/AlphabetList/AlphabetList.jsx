@@ -4,13 +4,16 @@ import { Box, Typography, List, Divider } from "@mui/material"
 import { dark } from "../../theme/colors"
 import { Link } from "react-router-dom"
 import arrowRight from "icons/arrow-right-16.svg"
+import { useSelector } from "react-redux"
 
 export const AlphabetList = React.memo(
   ({ list }) => {
+    const isPending = useSelector(state => state.isPending)
+
     return (
       <div>
         <KeyBoard />
-        {list?.length > 0 ? (
+        {list?.length > 0 && !isPending && (
           list.map((item, idx) => (
             <Box key={item.letter}>
               <List
@@ -18,6 +21,7 @@ export const AlphabetList = React.memo(
                   display: "flex",
                   maxWidth: "100%",
                   justifyContent: "space-between",
+                  minHeight: "120px"
                 }}
               >
                 <Typography
@@ -80,12 +84,13 @@ export const AlphabetList = React.memo(
               )}
             </Box>
           ))
-        ) : (
-          <Typography
-            sx={{ fontSize: "28px", fontWeight: "700", color: dark[600] }}
-          >
-            Таких брендов нет :(
-          </Typography>
+        )}
+        {!isPending && list?.length < 1 && (
+        <Typography
+          sx={{ fontSize: "28px", fontWeight: "700", color: dark[600] }}
+        >
+          Таких брендов нет :(
+        </Typography>
         )}
       </div>
     )

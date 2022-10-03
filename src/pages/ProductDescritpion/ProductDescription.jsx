@@ -201,6 +201,23 @@ export const ProductDescription = () => {
           <Typography sx={{ color: dark[600] }}>
             {product.description}
           </Typography>
+
+        </Container>
+        <Container sx={{
+          maxWidth: "1160px"
+        }}>
+          <Box sx={{
+            mt: 10
+          }}>
+            <Typography sx={{
+              fontWeight: 600,
+              fontSize: "34px",
+              color: dark[500],
+              mb: "20px"
+            }}>
+              Похожие товары
+            </Typography>
+          </Box>
         </Container>
       </Box>
     </Container>

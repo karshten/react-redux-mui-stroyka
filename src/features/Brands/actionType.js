@@ -1,2 +1,3 @@
 export const SET_BRAND_LIST = "SET_BRAND_LIST"
 export const FILTER_BRAND_LIST = "FILTER_BRAND_LIST"
+export const SET_IS_PENDING = "SET_IS_PENDING"

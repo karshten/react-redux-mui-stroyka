@@ -110,16 +110,15 @@ export const KeyBoard = () => {
   }
 
   useEffect(() => {
+    console.log("from keyboard");
     const letter = searchParams.get("letter")
     if (letter) {
       dispatch(filterBrandListAsync(letter))
       setActiveLetter(letter)
     } else dispatch(setBrandListAsync())
 
-    const unSubscribe = () => dispatch(setBrandListAsync())
-
     return () => {
-      unSubscribe()
+      
     }
   }, [searchParams])
 

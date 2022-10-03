@@ -28,7 +28,6 @@ export const PersonalArea = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log('test');
     if (newPassword.length >= 6 && newPassword !== confirmPassword) {
       setValidData(true)
       return

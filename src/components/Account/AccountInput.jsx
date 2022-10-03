@@ -14,7 +14,6 @@ const inputStyles = {
   }
 }
 export const AccountInput = ({ boxWidth, label, inputType, placeholder, sx, value, setState }) => {
-  console.log(value);
   return (
     <Box sx={{ width: boxWidth }}>
       <Typography
