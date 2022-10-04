@@ -3,11 +3,13 @@ import { questionsReducer } from "../features/Questions/reducer"
 import thunk from "redux-thunk"
 import { productsByDiscountReducer } from "../features/Products/reducer"
 import { brandsReducer } from "../features/Brands/reducer"
+import { cartReducer } from "../features/Basket/reducer"
 
 const reducers = combineReducers({
   questions: questionsReducer,
   productsByDiscount: productsByDiscountReducer,
-  brands: brandsReducer
+  brands: brandsReducer,
+  cart: cartReducer
 })
 
 export const store = createStore(

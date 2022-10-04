@@ -172,7 +172,8 @@ export const ProductDescription = () => {
                 fontWeight: 500
               }}>
                 {productCount}
-              </Typography></CountButton>
+              </Typography>
+            </CountButton>
             <CountButton onClick={() => setProductCount(oldCount => oldCount + 1)}><Box component='img' src={plus} /></CountButton>
           </Box>
           <Typography

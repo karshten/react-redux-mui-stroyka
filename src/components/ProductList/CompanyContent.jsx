@@ -1,6 +1,5 @@
 import React from "react"
 import { Box, Grid } from "@mui/material"
-import companyTest from "img/Frame 4184.png"
 
 export const CompanyContent = () => {
   return (

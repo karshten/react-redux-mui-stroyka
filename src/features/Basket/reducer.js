@@ -1,0 +1,29 @@
+import { ADD_TO_CART } from "./actionTypes"
+import produce from "immer"
+
+const initialState = {
+  items: {},
+  totalPrice: 0,
+  totalCount: 0,
+  providers: {},
+}
+export const cartReducer = produce((state = initialState, action) => {
+  switch (action.type) {
+    case ADD_TO_CART: {
+      const isExists = state.items[action.payload.id]
+      state.totalPrice += action.payload.price
+      state.totalCount += 1
+      state.providers[action.payload.provider] = action.payload.provider
+
+      if (isExists) {
+        state.items[action.payload.id].count += 1
+        return
+      }
+
+      state.items[action.payload.id] = { ...action.payload, count: 1 }
+      break
+    }
+    default:
+      return state
+  }
+})

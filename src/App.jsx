@@ -1,8 +1,7 @@
 import { Box, Container } from "@mui/material"
-import { Header } from "components"
 import { Route, Routes } from "react-router-dom"
-import { Footer } from "./components"
-import { Brands, Delivery, Home, PersonalArea, ProductDescription } from "./pages"
+import { Footer, Header } from "./components"
+import { Basket, Brands, Delivery, Home, PersonalArea, ProductDescription, Refund } from "./pages"
 
 const NotFound = () => <Container sx={{ maxWidth: '1160px' }}><h1>NotFound</h1></Container>
 
@@ -22,6 +21,8 @@ function App() {
           <Route path="/brands" element={<Brands />} />
           <Route path="/personal-area" element={<PersonalArea />} />
           <Route path="/product" element={<ProductDescription />} />
+          <Route path="/refund" element={<Refund />} />
+          <Route path="/basket" element={<Basket />} />
           {/* <Route path="/catalog:type/category:name/product:id" /> */}
           {/* <Route path="/docs" element={<Documentation />} /> */}
           <Route path="*" element={<NotFound />} />

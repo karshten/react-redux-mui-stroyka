@@ -44,7 +44,8 @@
       "oldPrice": 499,
       "discountValue": 25,
       "name": "Рубероид РКП-350 ТУ, размер материала 1 х 10 м (10м2, 1 рулон)",
-      "category": 0
+      "category": 0,
+      "provider": "Аксон"
     },
     {
       "id": 2,
@@ -53,7 +54,8 @@
       "oldPrice": 299,
       "discountValue": 25,
       "name": "Акции против Лукашенко в мире",
-      "category": 1
+      "category": 1,
+      "provider": "Лукашенко"
     },
     {
       "id": 3,
@@ -62,7 +64,8 @@
       "oldPrice": 499,
       "discountValue": 25,
       "name": "Рубероид РКП-350 ТУ, размер материала 1 х 10 м (10м2, 1 рулон)",
-      "category": 0
+      "category": 0,
+      "provider": "Аксон"
     },
     {
       "id": 4,
@@ -71,7 +74,8 @@
       "oldPrice": 299,
       "discountValue": 25,
       "name": "Акции против Лукашенко в мире",
-      "category": 1
+      "category": 1,
+      "provider": "Лукашенко"
     }
   ],
   "list": [
