@@ -1,13 +1,17 @@
 import { Box, Grid, Typography } from "@mui/material"
 import React from "react"
-import { SecondaryButtonIcon, PrimaryButton } from "../Button/Button"
+import { SecondaryButtonIcon, PrimaryButton, CountButton } from "../Button/Button"
 import { RightIcon } from "icons"
 import { grey, white, dark } from "../../theme/colors"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { addToCart } from "../../features/Basket/actions"
+
+import plus from "icons/plus.svg"
+import minus from "icons/minus.svg"
 
 export const ProductList = ({ items, title, onClick, btnText }) => {
   const dispatch = useDispatch()
+  const cartItems = useSelector((state) => state.cart?.items)
 
   const handleAddToCart = (product) => {
     dispatch(addToCart(product))
@@ -89,17 +93,47 @@ export const ProductList = ({ items, title, onClick, btnText }) => {
                         {item.oldPrice} ₽
                       </Typography>
                     </Box>
-                    <PrimaryButton
-                      onClick={() => handleAddToCart(item)}
-                      sx={{
-                        width: "100%",
-                        mt: 1,
-                        color: dark[600],
-                        fontWeight: 600,
-                      }}
-                    >
-                      В корзину
-                    </PrimaryButton>
+                    {cartItems?.[item.id] ?
+                      <>
+                        <CountButton
+                          onClick={() => console.log('dec')}
+                          sx={{
+                            width: "20%"
+                          }}
+                        >
+                          <Box component='img' src={minus} />
+                        </CountButton>
+                        <CountButton sx={{
+                          p: ' 8px 16px',
+                          width: "60% "
+                        }}>
+                          <Typography sx={{
+                            color: dark[500],
+                            fontSize: '18px',
+                            fontWeight: 500,
+                          }}>
+                            {cartItems?.[item.id]?.count}
+                          </Typography>
+                        </CountButton>
+                        <CountButton
+                          onClick={() => handleAddToCart(item)}
+                          sx={{
+                            width: "20%"
+                          }}
+                        >
+                          <Box component='img' src={plus} />
+                        </CountButton>
+                      </>
+                      :
+                      <PrimaryButton
+                        onClick={() => handleAddToCart(item)}
+                        sx={{
+                          width: "100%",
+                          mt: 1,
+                          color: dark[600],
+                          fontWeight: 600,
+                        }}
+                      >В корзину</PrimaryButton>}
                   </Box>
                 </Box>
               </Box>

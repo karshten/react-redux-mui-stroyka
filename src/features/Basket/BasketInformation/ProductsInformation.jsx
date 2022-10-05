@@ -20,9 +20,7 @@ const infoDelivery = [
   },
 ]
 export const ProductsInformation = () => {
-  const { totalPrice, totalCount, providers } = useSelector(
-    (state) => state.cart
-  )
+  const { totalPrice, totalCount, providers } = useSelector((state) => state.cart)
   return (
     <Box>
       <Box>
