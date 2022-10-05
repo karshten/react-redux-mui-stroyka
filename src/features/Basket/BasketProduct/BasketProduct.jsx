@@ -2,7 +2,7 @@ import { Box, Button } from "@mui/material"
 import { Typography } from "@mui/material"
 import { dark } from "theme/colors"
 import { useDispatch } from "react-redux"
-import { addToCart } from "../actions"
+import { addToCart, deleteProductFromCart, removeFromCart } from "../actions"
 import { CountButton } from "../../../components/Button/Button"
 import plus from "icons/plus.svg"
 import minus from "icons/minus.svg"
@@ -13,6 +13,14 @@ export const BasketProduct = (product) => {
 
   const handleAddToCart = () => {
     dispatch(addToCart(product))
+  }
+
+  const handleRemoveFromCart = () => {
+    dispatch(removeFromCart(product))
+  }
+
+  const handleDeleteProdcutFromCart = () => {
+    dispatch(deleteProductFromCart(product))
   }
   return (
     <Box
@@ -60,7 +68,7 @@ export const BasketProduct = (product) => {
               {count}
             </Typography>
           </CountButton>
-          <CountButton><Box component='img' src={minus} /></CountButton>
+          <CountButton onClick={handleRemoveFromCart}><Box component='img' src={minus} /></CountButton>
         </Box>
       </Box>
       <Box
@@ -80,6 +88,7 @@ export const BasketProduct = (product) => {
           </Typography>
         </Box>
         <Button
+          onClick={handleDeleteProdcutFromCart}
           sx={{
             fontSize: 18,
             color: dark[500],

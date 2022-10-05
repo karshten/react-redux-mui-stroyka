@@ -45,7 +45,6 @@ export const Basket = () => {
             <ProductsInformation />
             <Box>
               {Object.keys(cartItems).map((key) => {
-                console.log(cartItems[key]);
                 return <BasketProduct key={key} {...cartItems[key]} />
               })}
             </Box>

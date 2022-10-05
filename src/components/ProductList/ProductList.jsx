@@ -4,7 +4,7 @@ import { SecondaryButtonIcon, PrimaryButton, CountButton } from "../Button/Butto
 import { RightIcon } from "icons"
 import { grey, white, dark } from "../../theme/colors"
 import { useDispatch, useSelector } from "react-redux"
-import { addToCart } from "../../features/Basket/actions"
+import { addToCart, removeFromCart } from "../../features/Basket/actions"
 
 import plus from "icons/plus.svg"
 import minus from "icons/minus.svg"
@@ -15,6 +15,10 @@ export const ProductList = ({ items, title, onClick, btnText }) => {
 
   const handleAddToCart = (product) => {
     dispatch(addToCart(product))
+  }
+
+  const handleRemoveFromCart = (product) => {
+    dispatch(removeFromCart(product))
   }
 
   return (
@@ -96,7 +100,7 @@ export const ProductList = ({ items, title, onClick, btnText }) => {
                     {cartItems?.[item.id] ?
                       <>
                         <CountButton
-                          onClick={() => console.log('dec')}
+                          onClick={() => handleRemoveFromCart(item)}
                           sx={{
                             width: "20%"
                           }}
