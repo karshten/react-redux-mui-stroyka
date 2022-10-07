@@ -98,7 +98,7 @@ export const ProductList = ({ items, title, onClick, btnText }) => {
                       </Typography>
                     </Box>
                     {cartItems?.[item.id] ?
-                      <>
+                      <Box sx={{ mt: "10px" }}>
                         <CountButton
                           onClick={() => handleRemoveFromCart(item)}
                           sx={{
@@ -127,7 +127,7 @@ export const ProductList = ({ items, title, onClick, btnText }) => {
                         >
                           <Box component='img' src={plus} />
                         </CountButton>
-                      </>
+                      </Box>
                       :
                       <PrimaryButton
                         onClick={() => handleAddToCart(item)}
