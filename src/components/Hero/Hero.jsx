@@ -4,10 +4,11 @@ import { dark } from "../../theme/colors"
 import { BreadCrumbs } from "../BreadCrumbs/BreadCrumbs"
 
 export const Hero = React.memo(({ props, sx }) => {
+  const { imgUrl, path, caption, title } = props
   return (
     <Box
       sx={{
-        background: `url(${props.imgUrl}) no-repeat`,
+        background: `url(${imgUrl ? imgUrl : null}) no-repeat`,
         backgroundSize: "cover",
         minHeight: "232px",
         padding: "40 0 60px",
@@ -18,19 +19,22 @@ export const Hero = React.memo(({ props, sx }) => {
       }}
     >
       <Container sx={{ maxWidth: "1160px", p: '0 !important', }}>
-        <BreadCrumbs listOfPath={props?.path} />
+        <BreadCrumbs listOfPath={path ? path : []} />
         <Box sx={{ maxWidth: "520px" }}>
-          <Typography
-            sx={{
-              fontSize: "48px",
-              fontWeight: "700",
-              mt: 2.5,
-              color: dark[500],
-            }}
-          >
-            {props.title}
-          </Typography>
-          {props?.caption?.length ? (
+          {title?.length > 0 &&
+            <Typography
+              sx={{
+                fontSize: "48px",
+                fontWeight: "700",
+                mt: 2.5,
+                color: dark[500],
+              }}
+            >
+              {title}
+            </Typography>
+          }
+
+          {caption?.length > 0 && (
             <Typography
               sx={{
                 fontSize: "20px",
@@ -39,10 +43,8 @@ export const Hero = React.memo(({ props, sx }) => {
                 color: dark[600],
               }}
             >
-              {props.caption}
+              {caption}
             </Typography>
-          ) : (
-            ""
           )}
         </Box>
       </Container>

@@ -17,10 +17,10 @@ const pathItemStyles = {
   },
 }
 
-export const BreadCrumbs = ({ listOfPath }) => {
+export const BreadCrumbs = ({ listOfPath, sx }) => {
   return (
-    <List>
-      {listOfPath?.map((item, idx) => (
+    <List sx={{...sx}}>
+      {listOfPath?.length > 0 && listOfPath?.map((item, idx) => (
         <ListItem key={item.point} sx={pathItemStyles}>
           <Typography
             sx={{

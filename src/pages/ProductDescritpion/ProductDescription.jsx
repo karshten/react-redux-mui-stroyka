@@ -9,6 +9,7 @@ import plus from "icons/plus.svg"
 import minus from "icons/minus.svg"
 import deliveryTrack from 'icons/deliveryTrack.svg'
 import { useState } from 'react'
+import { BreadCrumbs } from '../../components/BreadCrumbs/BreadCrumbs'
 
 export const ProductDescription = () => {
   const product = {
@@ -67,36 +68,28 @@ export const ProductDescription = () => {
 
   return (
     <Container sx={{ maxWidth: '1160px' }}>
-      <Hero
-        props={{
-          imgUrl: null,
-          title: "",
-          caption: "",
-          path: [
-            {
-              point: "/",
-              name: "Главная",
-            },
-            {
-              point: "/catalog",
-              name: "Каталог",
-            },
-            {
-              point: "/catalog:type",
-              name: "Стройматериалы",
-            },
-            {
-              point: "/catalog:type/category:name",
-              name: "Сухие смеси",
-            },
-            {
-              point: "/catalog:type/category:name/product:id",
-              name: "Шпаклевка маслено-клеевая 3кг Л-С",
-            },
-          ],
-        }}
-        sx={{ height: 'auto', minHeight: 'none', mb: '40px' }}
-      ></Hero>
+      <BreadCrumbs sx={{ mb: 3 }} listOfPath={[
+        {
+          point: "/",
+          name: "Главная",
+        },
+        {
+          point: "/catalog",
+          name: "Каталог",
+        },
+        {
+          point: "/catalog:type",
+          name: "Стройматериалы",
+        },
+        {
+          point: "/catalog:type/category:name",
+          name: "Сухие смеси",
+        },
+        {
+          point: "/catalog:type/category:name/product:id",
+          name: "Шпаклевка маслено-клеевая 3кг Л-С",
+        },
+      ]} />
       <Box sx={{
         display: 'flex',
         alignItems: 'center',

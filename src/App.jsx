@@ -9,7 +9,8 @@ import {
   PersonalArea,
   ProductDescription,
   Refund,
-  Сatalog
+  Сatalog,
+  Contacts
 } from "./pages"
 
 const NotFound = () => <Container sx={{ maxWidth: '1160px' }}><h1>NotFound</h1></Container>
@@ -34,6 +35,7 @@ function App() {
           <Route path="/basket" element={<Basket />} />
           <Route path="/orders" element={<Orders />} />
           <Route path="/catalog" element={<Сatalog />} />
+          <Route path="/contacts" element={<Contacts />} />
           {/* <Route path="/catalog:type/category:name/product:id" /> */}
           {/* <Route path="/docs" element={<Documentation />} /> */}
           <Route path="*" element={<NotFound />} />
