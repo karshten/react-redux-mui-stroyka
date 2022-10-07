@@ -1,8 +1,8 @@
 import { Container, Typography } from "@mui/material"
 import { Box } from "@mui/system"
 import React from "react"
-import { Intro } from "./../../components/Intro/Intro"
-import basketIntro from "img/basket-intro.png"
+import { Hero } from "./../../components/Hero/Hero"
+import basketHero from "img/basket-intro.png"
 import { ProductsInformation } from "../../features/Basket/BasketInformation/ProductsInformation"
 import { BasketProduct } from "../../features/Basket/BasketProduct/BasketProduct"
 import { useSelector } from "react-redux"
@@ -12,9 +12,9 @@ export const Basket = () => {
   const cartItems = useSelector((state) => state.cart?.items)
   return (
     <>
-      <Intro
+      <Hero
         props={{
-          imgUrl: basketIntro,
+          imgUrl: basketHero,
           title: "Корзина",
           caption: "",
           path: [

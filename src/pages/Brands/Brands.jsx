@@ -1,6 +1,6 @@
 import React from "react"
 import { Container } from "@mui/material"
-import { Intro } from "../../components/Intro/Intro"
+import { Hero } from "../../components/Hero/Hero"
 import intro from "img/slider-item-1.png"
 import { ProductList } from "../../components/ProductList/ProductList"
 import { CompanyContent } from "../../components/ProductList/CompanyContent"
@@ -12,7 +12,7 @@ export const Brands = () => {
 
   return (
     <>
-      <Intro
+      <Hero
         props={{
           imgUrl: intro,
           title: "Все бренды",

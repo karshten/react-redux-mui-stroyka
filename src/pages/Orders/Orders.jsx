@@ -2,15 +2,15 @@ import { Box, Container } from '@mui/system'
 import React from 'react'
 import { OrderProduct } from './OrderProduct';
 import { Grid } from '@mui/material';
-import { Intro } from './../../components/Intro/Intro';
-import orderIntro from "img/order-intro.png"
+import { Hero } from './../../components/Hero/Hero';
+import orderHero from "img/order-intro.png"
 
 export const Orders = () => {
   return (
     <>
-      <Intro
+      <Hero
         props={{
-          imgUrl: orderIntro,
+          imgUrl: orderHero,
           title: "Заказы",
           caption: "",
           path: [

@@ -1,6 +1,6 @@
 import React from 'react'
 import catalogInro from "img/catalog-inro.png"
-import { Intro } from './../../components/Intro/Intro';
+import { Hero } from './../../components/Hero/Hero';
 import { Container } from '@mui/system';
 import { CatalogItem } from './CatalogItem';
 import { Grid } from '@mui/material';
@@ -20,7 +20,7 @@ const catalogItems = [
 export const Сatalog = () => {
   return (
     <>
-      <Intro
+      <Hero
         props={{
           imgUrl: catalogInro,
           title: "Каталог",

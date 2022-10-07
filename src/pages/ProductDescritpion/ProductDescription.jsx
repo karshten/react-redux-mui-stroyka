@@ -2,7 +2,7 @@ import { Container, Box, Typography } from '@mui/material'
 import React from 'react'
 import { CheckMark } from '../../assets/icons'
 import { CountButton, PrimaryButton } from '../../components/Button/Button'
-import { Intro } from '../../components/Intro/Intro'
+import { Hero } from '../../components/Hero/Hero'
 import { dark, grey, white } from '../../theme/colors'
 
 import plus from "icons/plus.svg"
@@ -67,7 +67,7 @@ export const ProductDescription = () => {
 
   return (
     <Container sx={{ maxWidth: '1160px' }}>
-      <Intro
+      <Hero
         props={{
           imgUrl: null,
           title: "",
@@ -96,7 +96,7 @@ export const ProductDescription = () => {
           ],
         }}
         sx={{ height: 'auto', minHeight: 'none', mb: '40px' }}
-      ></Intro>
+      ></Hero>
       <Box sx={{
         display: 'flex',
         alignItems: 'center',
