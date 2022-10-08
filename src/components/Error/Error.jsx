@@ -1,25 +1,26 @@
-import React from 'react'
-import { Box, Typography } from "@mui/material"
+import React, { useState } from 'react'
+import { Box, Modal, Typography } from "@mui/material"
 import { dark, grey } from '../../theme/colors'
 import { PrimaryButton } from '../Button/Button'
 import { Link } from 'react-router-dom'
 
-export const Error = () => {
+export const Error = ({ isOpen, content, title }) => {
+  const [open, setOpen] = useState(false)
+
+  const onClose = () => {
+    setOpen(false)
+  }
   return (
-    <Box sx={{
-      background: "rgba(23, 27, 36, 0.6)",
-      position: 'fixed',
-      width: "100%",
-      height: '100%',
-      zIndex: '100000',
-      top: 0,
-      left: 0,
-      display: 'flex',
-      justifyContent: 'center'
-    }}>
+    <Modal
+      open={isOpen ?? open}
+      onCLose={onClose}
+      sx={{
+        background: "rgba(23, 27, 36, 0.6)",
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center'
+      }}>
       <Box sx={{
-        position: "absolute",
-        top: "30%",
         width: "572px",
         maxHeight: "240px",
         display: "flex",
@@ -41,7 +42,7 @@ export const Error = () => {
             fontWeight: 600,
             color: dark[500]
           }}>
-            Ошибка
+            {title ?? "Ошибка"}
           </Typography>
           <Typography sx={{
             m: '12px 0 24px',
@@ -49,11 +50,11 @@ export const Error = () => {
             color: grey[900],
             lineHeight: "36px"
           }}>
-            Проблема с оплатой. Обратитесьза помощью к менеджеру
+            {content ?? "Проблема с оплатой. Обратитесьза помощью к менеджеру"}
           </Typography>
-          <Link to="/"><PrimaryButton>Вернуться в магазин</PrimaryButton></Link>
+          <Link to="/" onClick={onClose}><PrimaryButton>Вернуться в магазин</PrimaryButton></Link>
         </Box>
       </Box>
-    </Box>
+    </Modal>
   )
 }

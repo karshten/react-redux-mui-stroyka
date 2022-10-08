@@ -7,6 +7,7 @@ import { ProductsInformation } from "../../features/Basket/BasketInformation/Pro
 import { BasketProduct } from "../../features/Basket/BasketProduct/BasketProduct"
 import { useSelector } from "react-redux"
 import { dark } from "../../theme/colors"
+import { Error } from "../../components/Error/Error"
 
 export const Basket = () => {
   const cartItems = useSelector((state) => state.cart?.items)
@@ -30,6 +31,8 @@ export const Basket = () => {
         }}
         sx={{ my: "40px" }}
       />
+      <Error content="Пожалуйста, авторезуйтесь чтобы провести оплату."/>
+
       <Container
         sx={{
           maxWidth: "1160px",

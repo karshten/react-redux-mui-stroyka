@@ -33,14 +33,13 @@ export const Login = ({ closeLogin, openSignUp }) => {
         top: 0,
         left: 0,
         display: ' flex',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        alignItems: 'center'
       }}
     >
       <Box
         onClick={(e) => e.stopPropagation()}
         sx={{
-          position: 'absolute',
-          top: '10%',
           backgroundColor: white,
           p: 6
         }}>
