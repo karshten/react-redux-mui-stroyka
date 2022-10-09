@@ -1,4 +1,4 @@
-import { ADD_TO_CART, REMOVE_FROM_CART, DELETE_PRODUCT_FROM_CART } from "./actionTypes"
+import { ADD_TO_CART, REMOVE_FROM_CART, DELETE_PRODUCT_FROM_CART, SET_TO_CART } from "./actionTypes"
 import produce from "immer"
 
 const initialState = {
@@ -9,6 +9,12 @@ const initialState = {
 }
 export const cartReducer = produce((state = initialState, action) => {
   switch (action.type) {
+    case SET_TO_CART: {
+      Object.keys(action.payload).forEach(key => {
+        state[key] = action.payload[key]
+      })
+      break 
+    }
     case ADD_TO_CART: {
       const isExists = state.items[action.payload.id]
       state.totalPrice += action.payload.price
@@ -27,7 +33,7 @@ export const cartReducer = produce((state = initialState, action) => {
       const isExists = state.items[action.payload.id]
       state.totalPrice -= action.payload.price
       state.totalCount -= 1
-      
+
 
       if (isExists && state.items[action.payload.id].count > 1) {
         state.items[action.payload.id].count -= 1

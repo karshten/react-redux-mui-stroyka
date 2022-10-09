@@ -4,7 +4,9 @@ import { grey, dark } from "../../../theme/colors"
 import order from "icons/order.svg"
 import delivery from "icons/delivery.svg"
 import info from "icons/info.svg"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
+import { useEffect } from "react"
+import { checkProductsInLocalStorage } from "../actions"
 
 const infoDelivery = [
   { label: "Можно сделать заказ только от одного поставщика", src: info },
@@ -21,6 +23,13 @@ const infoDelivery = [
 ]
 export const ProductsInformation = () => {
   const { totalPrice, totalCount, providers } = useSelector((state) => state.cart)
+
+  const dispatch = useDispatch()
+  useEffect(() => {
+    if (!totalCount) {
+      dispatch(checkProductsInLocalStorage())
+    }
+  }, [])
   return (
     <Box>
       <Box>

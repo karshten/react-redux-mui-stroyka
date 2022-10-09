@@ -1,14 +1,16 @@
 import { Box, Button } from "@mui/material"
 import { Typography } from "@mui/material"
 import { dark } from "theme/colors"
-import { useDispatch } from "react-redux"
-import { addToCart, deleteProductFromCart, removeFromCart } from "../actions"
+import { useDispatch, useSelector } from "react-redux"
+import { addToCart, deleteProductFromCart, removeFromCart, setLocalStorageProducts } from "../actions"
 import { CountButton } from "../../../components/Button/Button"
 import plus from "icons/plus.svg"
 import minus from "icons/minus.svg"
+import { useEffect } from "react"
 
 export const BasketProduct = (product) => {
   const { img, price, name, code, count } = product
+  const cart = useSelector(({ cart }) => cart)
   const dispatch = useDispatch()
 
   const handleAddToCart = () => {
@@ -22,6 +24,10 @@ export const BasketProduct = (product) => {
   const handleDeleteProdcutFromCart = () => {
     dispatch(deleteProductFromCart(product))
   }
+
+  useEffect(() => {
+    setLocalStorageProducts(cart)
+  }, [cart])
   return (
     <Box
       sx={{
