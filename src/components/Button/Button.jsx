@@ -1,5 +1,8 @@
 import { Button } from "@mui/material"
 import React from "react"
+import { useEffect } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { addToCart, deleteProductFromCart, removeFromCart, setLocalStorageProducts } from "../../features/Basket/actions"
 import { yellow, dark, white } from "../../theme/colors"
 
 const stylesButton = {
@@ -94,4 +97,56 @@ export const CountButton = ({ children, sx, ...props }) => {
       {children}
     </Button>
   )
+}
+
+export const makeCartButton = (type, product) => {
+  const dispatch = useDispatch()
+  const cart = useSelector(({ cart }) => cart)
+
+  const CartButton = ({ isPrimary, children, sx, productItem, ...props }) => {
+
+    const handleAddToCart = () => {
+      dispatch(addToCart(product ?? productItem))
+    }
+
+    const handleRemoveFromCart = () => {
+      dispatch(removeFromCart(product ?? productItem))
+    }
+
+    const handleDeleteProdcutFromCart = () => {
+      dispatch(deleteProductFromCart(product ?? productItem))
+    }
+
+    useEffect(() => {
+      const unsub = () => setLocalStorageProducts(cart)
+
+      return () => unsub()
+    }, [cart])
+
+
+    const cartAction = () => {
+      switch (type) {
+        case "ADD_TO_CART": {
+          handleAddToCart()
+          break
+        }
+        case "REMOVE_FROM_CART": {
+          handleRemoveFromCart()
+          break
+        }
+        case "DELETE_PRODUCT_FROM_CART": {
+          handleDeleteProdcutFromCart()
+          break
+        }
+      }
+    }
+
+    return (
+      isPrimary ?
+        <PrimaryButton onClick={cartAction} sx={{ ...sx }} {...props}>{children}</PrimaryButton> :
+        <CountButton onClick={cartAction} sx={{ ...sx }} {...props}>{children}</CountButton>
+    )
+  }
+
+  return CartButton
 }

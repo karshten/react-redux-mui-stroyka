@@ -1,33 +1,16 @@
-import { Box, Button } from "@mui/material"
+import { Box } from "@mui/material"
 import { Typography } from "@mui/material"
 import { dark } from "theme/colors"
-import { useDispatch, useSelector } from "react-redux"
-import { addToCart, deleteProductFromCart, removeFromCart, setLocalStorageProducts } from "../actions"
-import { CountButton } from "../../../components/Button/Button"
+import { CountButton, makeCartButton } from "../../../components/Button/Button"
 import plus from "icons/plus.svg"
 import minus from "icons/minus.svg"
-import { useEffect } from "react"
 
 export const BasketProduct = (product) => {
   const { img, price, name, code, count } = product
-  const cart = useSelector(({ cart }) => cart)
-  const dispatch = useDispatch()
+  const AddToCartButton = makeCartButton('ADD_TO_CART', product)
+  const RemoveFromCartButton = makeCartButton('REMOVE_FROM_CART', product)
+  const DeleteProductFromCartButton = makeCartButton('DELETE_PRODUCT_FROM_CART', product)
 
-  const handleAddToCart = () => {
-    dispatch(addToCart(product))
-  }
-
-  const handleRemoveFromCart = () => {
-    dispatch(removeFromCart(product))
-  }
-
-  const handleDeleteProdcutFromCart = () => {
-    dispatch(deleteProductFromCart(product))
-  }
-
-  useEffect(() => {
-    setLocalStorageProducts(cart)
-  }, [cart])
   return (
     <Box
       sx={{
@@ -64,7 +47,7 @@ export const BasketProduct = (product) => {
           {price} ₽
         </Typography>
         <Box display="flex">
-          <CountButton onClick={handleAddToCart}><Box component='img' src={plus} /></CountButton>
+          <AddToCartButton isPrimary={false}><Box component='img' src={plus} /></AddToCartButton>
           <CountButton sx={{ p: ' 8px 16px' }}>
             <Typography sx={{
               color: dark[500],
@@ -74,7 +57,7 @@ export const BasketProduct = (product) => {
               {count}
             </Typography>
           </CountButton>
-          <CountButton onClick={handleRemoveFromCart}><Box component='img' src={minus} /></CountButton>
+          <RemoveFromCartButton isPrimary={false}><Box component='img' src={minus} /></RemoveFromCartButton>
         </Box>
       </Box>
       <Box
@@ -93,8 +76,7 @@ export const BasketProduct = (product) => {
             {code}
           </Typography>
         </Box>
-        <Button
-          onClick={handleDeleteProdcutFromCart}
+        <DeleteProductFromCartButton
           sx={{
             fontSize: 18,
             color: dark[500],
@@ -106,7 +88,7 @@ export const BasketProduct = (product) => {
           variant="outlined"
         >
           Удалить товар
-        </Button>
+        </DeleteProductFromCartButton>
       </Box>
     </Box>
   )

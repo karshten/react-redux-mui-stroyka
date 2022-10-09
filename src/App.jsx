@@ -1,6 +1,9 @@
 import { Box, Container } from "@mui/material"
+import { useEffect } from "react"
+import { useDispatch, useSelector } from "react-redux"
 import { Route, Routes } from "react-router-dom"
 import { Footer, Header } from "./components"
+import { checkProductsInLocalStorage } from "./features/Basket/actions"
 import {
   Basket, Brands,
   Delivery,
@@ -16,6 +19,16 @@ import {
 const NotFound = () => <Container sx={{ maxWidth: '1160px' }}><h1>NotFound</h1></Container>
 
 function App() {
+
+  const { totalCount } = useSelector((state) => state.cart)
+
+  const dispatch = useDispatch()
+  useEffect(() => {
+    if (!totalCount) {
+      dispatch(checkProductsInLocalStorage())
+    }
+  }, [])
+
   return (
     <Box className="App" sx={{
       display: "flex",

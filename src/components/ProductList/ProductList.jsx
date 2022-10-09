@@ -1,25 +1,17 @@
 import { Box, Grid, Typography } from "@mui/material"
 import React from "react"
-import { SecondaryButtonIcon, PrimaryButton, CountButton } from "../Button/Button"
+import { SecondaryButtonIcon, CountButton, makeCartButton } from "../Button/Button"
 import { RightIcon } from "icons"
 import { grey, white, dark } from "../../theme/colors"
-import { useDispatch, useSelector } from "react-redux"
-import { addToCart, removeFromCart } from "../../features/Basket/actions"
+import { useSelector } from "react-redux"
 
 import plus from "icons/plus.svg"
 import minus from "icons/minus.svg"
 
 export const ProductList = ({ items, title, onClick, btnText }) => {
-  const dispatch = useDispatch()
   const cartItems = useSelector((state) => state.cart?.items)
-
-  const handleAddToCart = (product) => {
-    dispatch(addToCart(product))
-  }
-
-  const handleRemoveFromCart = (product) => {
-    dispatch(removeFromCart(product))
-  }
+  const AddToCartButton = makeCartButton('ADD_TO_CART')
+  const RemoveFromCartButton = makeCartButton('REMOVE_FROM_CART')
 
   return (
     <Box component="section" py={10}>
@@ -99,14 +91,14 @@ export const ProductList = ({ items, title, onClick, btnText }) => {
                     </Box>
                     {cartItems?.[item.id] ?
                       <Box sx={{ mt: "10px" }}>
-                        <CountButton
-                          onClick={() => handleRemoveFromCart(item)}
+                        <RemoveFromCartButton
+                          isPrimary={false}
+                          productItem={cartItems[item.id]}
                           sx={{
                             width: "20%"
                           }}
-                        >
-                          <Box component='img' src={minus} />
-                        </CountButton>
+                        ><Box component='img' src={minus} /></RemoveFromCartButton>
+
                         <CountButton sx={{
                           p: ' 8px 16px',
                           width: "60% "
@@ -119,25 +111,26 @@ export const ProductList = ({ items, title, onClick, btnText }) => {
                             {cartItems?.[item.id]?.count}
                           </Typography>
                         </CountButton>
-                        <CountButton
-                          onClick={() => handleAddToCart(item)}
+
+                        <AddToCartButton
+                          isPrimary={false}
+                          productItem={cartItems[item.id]}
                           sx={{
                             width: "20%"
                           }}
-                        >
-                          <Box component='img' src={plus} />
-                        </CountButton>
+                        ><Box component='img' src={plus} /></AddToCartButton>
                       </Box>
                       :
-                      <PrimaryButton
-                        onClick={() => handleAddToCart(item)}
+                      <AddToCartButton
+                        isPrimary={true}
+                        productItem={item}
                         sx={{
                           width: "100%",
                           mt: 1,
                           color: dark[600],
                           fontWeight: 600,
                         }}
-                      >В корзину</PrimaryButton>}
+                      >В корзину</AddToCartButton>}
                   </Box>
                 </Box>
               </Box>
