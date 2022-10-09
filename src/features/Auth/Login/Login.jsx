@@ -1,13 +1,17 @@
 import React, { useState } from 'react'
 import { Box, Typography } from "@mui/material"
 import { white, dark, grey } from 'theme/colors'
-import { PrimaryButton } from '../../components/Button/Button'
-import { AccountInput } from '../../components/Account/AccountInput'
+import { PrimaryButton } from '../../../components/Button/Button'
+import { AccountInput } from '../../../components/Account/AccountInput'
+import { useDispatch } from 'react-redux'
+import { loginAsync } from '../actions'
 
 export const Login = ({ closeLogin, openSignUp }) => {
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+
+  const dispatch = useDispatch()
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -16,7 +20,9 @@ export const Login = ({ closeLogin, openSignUp }) => {
       email,
       password
     }
-    console.log(loginInfo);
+
+    dispatch(loginAsync(loginInfo))
+
     setEmail('')
     setPassword('')
   }

@@ -113,7 +113,11 @@
     },
     {
       "letter": "C",
-      "items": ["Cemmix", "Ceramica Konskie", "Ceresit"]
+      "items": [
+        "Cemmix",
+        "Ceramica Konskie",
+        "Ceresit"
+      ]
     },
     {
       "letter": "А",
@@ -142,10 +146,24 @@
     },
     {
       "letter": "Г",
-      "items": ["Гипрофи"]
+      "items": [
+        "Гипрофи"
+      ]
     }
   ],
-  "users" : [
-    
+  "users": [
+    {
+      "email": "oskar.shtefan@gmail.com",
+      "password": "123456",
+      "name": "oskar",
+      "id": 1
+    }
+  ],
+  "login": [
+    {
+      "email": "oskar@gmail.com",
+      "password": "123456",
+      "id": 1
+    }
   ]
 }

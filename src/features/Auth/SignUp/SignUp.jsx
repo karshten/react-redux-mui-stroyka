@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import { Box, Typography } from "@mui/material"
 import { white, dark } from 'theme/colors'
-import { PrimaryButton } from '../../components/Button/Button'
-import { AccountInput } from '../../components/Account/AccountInput'
+import { PrimaryButton } from '../../../components/Button/Button'
+import { AccountInput } from '../../../components/Account/AccountInput'
+import { signUpAsync } from '../actions'
+import { useDispatch } from 'react-redux'
 
 export const SignUp = ({ closeSignUp }) => {
 
@@ -11,6 +13,8 @@ export const SignUp = ({ closeSignUp }) => {
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const [name, setName] = useState('')
+
+  const dispatch = useDispatch()
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -21,12 +25,14 @@ export const SignUp = ({ closeSignUp }) => {
     const signUpInfo = {
       email,
       password,
-      displayName: name
+      name,
     }
 
-    console.log(signUpInfo);
+    dispatch(signUpAsync(signUpInfo))
+
     setEmail('')
     setPassword('')
+    setConfirmPassword('')
     setName('')
   }
 

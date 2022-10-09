@@ -14,9 +14,9 @@ import basketIcon from "icons/basket.svg"
 import { MenuIcon, SearchIcon } from "icons"
 import { PrimaryButtonIcon } from "../Button/Button"
 import { LogoIcon } from "../../assets/icons"
-import { Login } from "features/Auth/Login"
+import { Login } from "features/Auth/Login/Login"
 import { useState } from "react"
-import { SignUp } from "features/Auth/SignUp"
+import { SignUp } from "features/Auth/SignUp/SignUp"
 import { useNavigate } from "react-router-dom"
 
 const stylesInput = {
