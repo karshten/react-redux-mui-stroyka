@@ -32,6 +32,10 @@ export default defineConfig({
         find: "theme",
         replacement: path.resolve(__dirname, "src/theme"),
       },
+      {
+        find: "features",
+        replacement: path.resolve(__dirname, "src/features"),
+      },
     ],
   },
   server: {

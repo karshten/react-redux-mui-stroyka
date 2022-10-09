@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { Box, Typography } from "@mui/material"
 import { white, dark, grey } from 'theme/colors'
-import { PrimaryButton } from '../Button/Button'
-import { AccountInput } from './AccountInput'
+import { PrimaryButton } from '../../components/Button/Button'
+import { AccountInput } from '../../components/Account/AccountInput'
 
 export const Login = ({ closeLogin, openSignUp }) => {
 
