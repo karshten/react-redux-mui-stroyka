@@ -187,13 +187,13 @@ export const LogoIcon = ({ textColor = "#171B24", ...props }) => (
   </svg>
 )
 
-export const ArrowRight = () => {
+export const ArrowRight = ({color, width}) => {
   return (
     <>
-      <svg width="22" height="14" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width={width ?? "22"} height="14" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g clipPath="url(#clip0_400_6136)">
-          <path d="M1.63171 8H13.2984" stroke="#454950" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-          <path d="M7.46509 2.16675L13.2984 8.00008L7.46509 13.8334" stroke="#454950" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M1.63171 8H13.2984" stroke={color ?? "#454950"} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M7.46509 2.16675L13.2984 8.00008L7.46509 13.8334" stroke={color ?? "#454950"} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
         </g>
         <defs>
           <clipPath id="clip0_400_6136">
@@ -205,7 +205,7 @@ export const ArrowRight = () => {
   )
 }
 
-export const CheckMark = ({isAvailable}) => {
+export const CheckMark = ({ isAvailable }) => {
   const color = isAvailable ? "#3BAA35" : grey[600]
   return (
     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -218,6 +218,25 @@ export const CheckMark = ({isAvailable}) => {
           <rect width="16" height="16" fill="white" />
         </clipPath>
       </defs>
+    </svg>
+
+  )
+}
+
+export const MapIcon = ({ color }) => {
+  return (
+    <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M18.1317 8.33325C18.1317 14.1666 10.6317 19.1666 10.6317 19.1666C10.6317 19.1666 3.13171 14.1666 3.13171 8.33325C3.13171 6.34413 3.92189 4.43647 5.32841 3.02995C6.73494 1.62343 8.64259 0.833252 10.6317 0.833252C12.6208 0.833252 14.5285 1.62343 15.935 3.02995C17.3415 4.43647 18.1317 6.34413 18.1317 8.33325Z" stroke={color ?? "#5D6066"} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M10.6317 10.8333C12.0124 10.8333 13.1317 9.71396 13.1317 8.33325C13.1317 6.95254 12.0124 5.83325 10.6317 5.83325C9.251 5.83325 8.13171 6.95254 8.13171 8.33325C8.13171 9.71396 9.251 10.8333 10.6317 10.8333Z" stroke={color ?? "#5D6066"} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  )
+}
+
+export const MailIcon = ({ color }) => {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke={color ?? "#E8E9EA"} stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      <path d="M22 6L12 13L2 6" stroke={color ?? "#E8E9EA"} stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
     </svg>
 
   )

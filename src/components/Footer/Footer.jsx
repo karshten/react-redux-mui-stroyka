@@ -9,11 +9,9 @@ import {
 } from "@mui/material"
 import { dark, grey, white } from "./../../theme/colors"
 import { Link } from "react-router-dom"
-import map from "icons/map-footer.svg"
-import mail from "icons/mail-footer.svg"
-import visaImg from "icons/visa-img.svg"
-import arrowRight from "icons/arrow-right-footer.svg"
-import { LogoIcon } from "../../assets/icons"
+import visaImg from "img/visa-img.png"
+import arrowRightWhite from "icons/arrow-right-white.svg"
+import { LogoIcon, MapIcon, MailIcon } from "../../assets/icons"
 
 const userLinks = ["Личный кабинет", "Заказы", "Избранное", "Корзина"]
 const section = ["Каталог", "Акции", "Бренды", "Контакты"]
@@ -46,11 +44,15 @@ export const Footer = () => {
             </Link>
             <List sx={{ mt: 3, p: 0 }}>
               <ListItem sx={{ p: 0, mb: 2, cursor: "pointer" }}>
-                <Box mr={1.1} component="img" src={mail} />
+                <Box mr={1.1}>
+                  <MailIcon color="#fff" />
+                </Box>
                 <Typography>info@stroykastore.ru</Typography>
               </ListItem>
               <ListItem sx={{ p: 0, cursor: "pointer" }}>
-                <Box mr={1.1} component="img" src={map} />
+                <Box mr={1.1}>
+                  <MapIcon color="#fff" />
+                </Box>
                 <Typography>Москва, ул. Камушкина 10</Typography>
               </ListItem>
             </List>
@@ -62,14 +64,27 @@ export const Footer = () => {
                   p: 0,
                   mb: 1.5,
                   cursor: "pointer",
-                  width: "150px",
-                  "&:hover img": {
+                  width: "180px",
+                  "&::before": {
+                    content: '""',
                     display: "block",
+                    width: "0",
+                    height: "22px",
+                    opacity: "0",
+                    background: `url(${arrowRightWhite}) no-repeat`,
+                    mr: "7px",
+                    transition: ".3s",
                   },
+                  "&:hover": {
+                    "&:before": {
+                      opacity: 1,
+                      width: "22px",
+                    },
+                  }
                 }}
                 key={link}
               >
-                <Box component="img" mr={0.5} display="none" src={arrowRight} />
+                <Box component="img" mr={0.5} display="none" src={arrowRightWhite} />
                 <Typography>{link}</Typography>
               </ListItem>
             ))}
@@ -82,13 +97,25 @@ export const Footer = () => {
                   mb: 1.5,
                   cursor: "pointer",
                   width: "120px",
-                  "&:hover img": {
+                  "&::before": {
+                    content: '""',
                     display: "block",
+                    width: "0",
+                    height: "22px",
+                    opacity: "0",
+                    background: `url(${arrowRightWhite}) no-repeat`,
+                    mr: "7px",
+                    transition: ".3s",
+                  },
+                  "&:hover": {
+                    "&:before": {
+                      opacity: 1,
+                      width: "22px",
+                    },
                   },
                 }}
                 key={link}
               >
-                <Box component="img" mr={0.5} display="none" src={arrowRight} />
                 <Typography>{link}</Typography>
               </ListItem>
             ))}
@@ -101,13 +128,25 @@ export const Footer = () => {
                   mb: 1.5,
                   cursor: "pointer",
                   width: "180px",
-                  "&:hover img": {
+                  "&::before": {
+                    content: '""',
                     display: "block",
+                    width: "0",
+                    height: "22px",
+                    opacity: "0",
+                    background: `url(${arrowRightWhite}) no-repeat`,
+                    mr: "7px",
+                    transition: ".3s",
                   },
+                  "&:hover": {
+                    "&:before": {
+                      opacity: 1,
+                      width: "22px",
+                    },
+                  }
                 }}
                 key={link}
               >
-                <Box component="img" mr={0.5} display="none" src={arrowRight} />
                 <Typography>{link}</Typography>
               </ListItem>
             ))}
@@ -127,6 +166,6 @@ export const Footer = () => {
           <Typography>Cделано в KRUGLOV STUDIO</Typography>
         </Box>
       </Container>
-    </AppBar>
+    </AppBar >
   )
 }
