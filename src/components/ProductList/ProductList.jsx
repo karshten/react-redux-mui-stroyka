@@ -1,6 +1,6 @@
 import { Box, Grid, Typography } from "@mui/material"
 import React from "react"
-import { SecondaryButtonIcon, CountButton, makeCartButton } from "../Button/Button"
+import { SecondaryButtonIcon, CountButton, CartButton } from "../Button/Button"
 import { RightIcon } from "icons"
 import { grey, white, dark } from "../../theme/colors"
 import { useSelector } from "react-redux"
@@ -10,8 +10,6 @@ import minus from "icons/minus.svg"
 
 export const ProductList = ({ items, title, onClick, btnText }) => {
   const cartItems = useSelector((state) => state.cart?.items)
-  const AddToCartButton = makeCartButton('ADD_TO_CART')
-  const RemoveFromCartButton = makeCartButton('REMOVE_FROM_CART')
 
   return (
     <Box component="section" py={10}>
@@ -91,13 +89,15 @@ export const ProductList = ({ items, title, onClick, btnText }) => {
                     </Box>
                     {cartItems?.[item.id] ?
                       <Box sx={{ mt: "10px" }}>
-                        <RemoveFromCartButton
+                        <CartButton
+                          type="REMOVE_FROM_CART"
                           isPrimary={false}
-                          productItem={cartItems[item.id]}
+                          product={cartItems[item.id]}
                           sx={{
                             width: "20%"
                           }}
-                        ><Box component='img' src={minus} /></RemoveFromCartButton>
+                        ><Box component='img' src={minus} />
+                        </CartButton>
 
                         <CountButton sx={{
                           p: ' 8px 16px',
@@ -112,25 +112,29 @@ export const ProductList = ({ items, title, onClick, btnText }) => {
                           </Typography>
                         </CountButton>
 
-                        <AddToCartButton
+                        <CartButton
+                          type="ADD_TO_CART"
                           isPrimary={false}
-                          productItem={cartItems[item.id]}
+                          product={cartItems[item.id]}
                           sx={{
                             width: "20%"
                           }}
-                        ><Box component='img' src={plus} /></AddToCartButton>
+                        ><Box component='img' src={plus} />
+                        </CartButton>
                       </Box>
                       :
-                      <AddToCartButton
+                      <CartButton
+                        type="ADD_TO_CART"
                         isPrimary={true}
-                        productItem={item}
+                        product={item}
                         sx={{
                           width: "100%",
                           mt: 1,
                           color: dark[600],
                           fontWeight: 600,
                         }}
-                      >В корзину</AddToCartButton>}
+                      >В корзину
+                      </CartButton>}
                   </Box>
                 </Box>
               </Box>

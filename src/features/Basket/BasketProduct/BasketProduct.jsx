@@ -1,15 +1,12 @@
 import { Box } from "@mui/material"
 import { Typography } from "@mui/material"
 import { dark } from "theme/colors"
-import { CountButton, makeCartButton } from "../../../components/Button/Button"
+import { CartButton, CountButton } from "../../../components/Button/Button"
 import plus from "icons/plus.svg"
 import minus from "icons/minus.svg"
 
 export const BasketProduct = (product) => {
   const { img, price, name, code, count } = product
-  const AddToCartButton = makeCartButton('ADD_TO_CART', product)
-  const RemoveFromCartButton = makeCartButton('REMOVE_FROM_CART', product)
-  const DeleteProductFromCartButton = makeCartButton('DELETE_PRODUCT_FROM_CART', product)
 
   return (
     <Box
@@ -47,7 +44,12 @@ export const BasketProduct = (product) => {
           {price} ₽
         </Typography>
         <Box display="flex">
-          <AddToCartButton isPrimary={false}><Box component='img' src={plus} /></AddToCartButton>
+          <CartButton
+            type="ADD_TO_CART"
+            product={product}
+            isPrimary={false}>
+            <Box component='img' src={plus} />
+          </CartButton>
           <CountButton sx={{ p: ' 8px 16px' }}>
             <Typography sx={{
               color: dark[500],
@@ -57,7 +59,12 @@ export const BasketProduct = (product) => {
               {count}
             </Typography>
           </CountButton>
-          <RemoveFromCartButton isPrimary={false}><Box component='img' src={minus} /></RemoveFromCartButton>
+          <CartButton
+            type="REMOVE_FROM_CART"
+            product={product}
+            isPrimary={false}>
+            <Box component='img' src={minus} />
+          </CartButton>
         </Box>
       </Box>
       <Box
@@ -76,7 +83,9 @@ export const BasketProduct = (product) => {
             {code}
           </Typography>
         </Box>
-        <DeleteProductFromCartButton
+        <CartButton
+          type="DELETE_PRODUCT_FROM_CART"
+          product={product}
           sx={{
             fontSize: 18,
             color: dark[500],
@@ -88,7 +97,7 @@ export const BasketProduct = (product) => {
           variant="outlined"
         >
           Удалить товар
-        </DeleteProductFromCartButton>
+        </CartButton>
       </Box>
     </Box>
   )

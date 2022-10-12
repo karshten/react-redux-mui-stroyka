@@ -99,51 +99,48 @@ export const CountButton = ({ children, sx, ...props }) => {
   )
 }
 
-export const makeCartButton = (type, product) => {
+
+
+export const CartButton = ({ isPrimary, children, sx, type, product, ...props }) => {
   const dispatch = useDispatch()
   const cart = useSelector(({ cart }) => cart)
 
-  const CartButton = ({ isPrimary, children, sx, productItem, ...props }) => {
-
-    const handleAddToCart = () => {
-      dispatch(addToCart(product ?? productItem))
-      setLocalStorageProducts(cart)
-    }
-
-    const handleRemoveFromCart = () => {
-      dispatch(removeFromCart(product ?? productItem))
-      setLocalStorageProducts(cart)
-    }
-
-    const handleDeleteProdcutFromCart = () => {
-      dispatch(deleteProductFromCart(product ?? productItem))
-      setLocalStorageProducts(cart)
-    }
-
-
-    const cartAction = () => {
-      switch (type) {
-        case "ADD_TO_CART": {
-          handleAddToCart()
-          break
-        }
-        case "REMOVE_FROM_CART": {
-          handleRemoveFromCart()
-          break
-        }
-        case "DELETE_PRODUCT_FROM_CART": {
-          handleDeleteProdcutFromCart()
-          break
-        }
-      }
-    }
-
-    return (
-      isPrimary ?
-        <PrimaryButton onClick={cartAction} sx={{ ...sx }} {...props}>{children}</PrimaryButton> :
-        <CountButton onClick={cartAction} sx={{ ...sx }} {...props}>{children}</CountButton>
-    )
+  const handleAddToCart = () => {
+    dispatch(addToCart(product))
+    setLocalStorageProducts(cart)
   }
 
-  return CartButton
+  const handleRemoveFromCart = () => {
+    dispatch(removeFromCart(product))
+    setLocalStorageProducts(cart)
+  }
+
+  const handleDeleteProdcutFromCart = () => {
+    dispatch(deleteProductFromCart(product))
+    setLocalStorageProducts(cart)
+  }
+
+
+  const cartAction = () => {
+    switch (type) {
+      case "ADD_TO_CART": {
+        handleAddToCart()
+        break
+      }
+      case "REMOVE_FROM_CART": {
+        handleRemoveFromCart()
+        break
+      }
+      case "DELETE_PRODUCT_FROM_CART": {
+        handleDeleteProdcutFromCart()
+        break
+      }
+    }
+  }
+
+  return (
+    isPrimary ?
+      <PrimaryButton onClick={cartAction} sx={{ ...sx }} {...props}>{children}</PrimaryButton> :
+      <CountButton onClick={cartAction} sx={{ ...sx }} {...props}>{children}</CountButton>
+  )
 }
