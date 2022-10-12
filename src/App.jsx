@@ -13,10 +13,10 @@ import {
   ProductDescription,
   Refund,
   Сatalog,
-  Contacts
+  Contacts,
+  NotFound,
+  Thank
 } from "./pages"
-
-const NotFound = () => <Container sx={{ maxWidth: '1160px' }}><h1>NotFound</h1></Container>
 
 function App() {
 
@@ -49,6 +49,7 @@ function App() {
           <Route path="/orders" element={<Orders />} />
           <Route path="/catalog" element={<Сatalog />} />
           <Route path="/contacts" element={<Contacts />} />
+          <Route path="/thank" element={<Thank />} />
           {/* <Route path="/catalog:type/category:name/product:id" /> */}
           {/* <Route path="/docs" element={<Documentation />} /> */}
           <Route path="*" element={<NotFound />} />

@@ -107,21 +107,18 @@ export const makeCartButton = (type, product) => {
 
     const handleAddToCart = () => {
       dispatch(addToCart(product ?? productItem))
+      setLocalStorageProducts(cart)
     }
 
     const handleRemoveFromCart = () => {
       dispatch(removeFromCart(product ?? productItem))
+      setLocalStorageProducts(cart)
     }
 
     const handleDeleteProdcutFromCart = () => {
       dispatch(deleteProductFromCart(product ?? productItem))
+      setLocalStorageProducts(cart)
     }
-
-    useEffect(() => {
-      const unsub = () => setLocalStorageProducts(cart)
-
-      return () => unsub()
-    }, [cart])
 
 
     const cartAction = () => {
