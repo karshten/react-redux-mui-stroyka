@@ -6,7 +6,9 @@ import delivery from "icons/delivery.svg"
 import info from "icons/info.svg"
 import { useDispatch, useSelector } from "react-redux"
 import { useEffect } from "react"
-import { checkProductsInLocalStorage } from "../actions"
+import { checkProductsInLocalStorage, resetCart, setToCart } from "../actions"
+import { addOrderAsync } from "../../Orders/actions"
+import { useNavigate } from "react-router-dom"
 
 const infoDelivery = [
   { label: "Можно сделать заказ только от одного поставщика", src: info },
@@ -22,9 +24,23 @@ const infoDelivery = [
   },
 ]
 export const ProductsInformation = () => {
-  const { totalPrice, totalCount, providers } = useSelector((state) => state.cart)
-
+  const { totalPrice, totalCount, providers, items } = useSelector((state) => state.cart)
   const dispatch = useDispatch()
+  const navigate = useNavigate()
+
+  const handleConfirmOrders = () => {
+    dispatch(addOrderAsync({
+      totalPrice,
+      totalCount,
+      providers,
+      items,
+      createdAt: new Date()
+    }))
+    dispatch(resetCart())
+    localStorage.setItem('products', {})
+    navigate('/thank')
+  }
+
   useEffect(() => {
     if (!totalCount) {
       dispatch(checkProductsInLocalStorage())
@@ -144,6 +160,7 @@ export const ProductsInformation = () => {
         </Box>
         <Box sx={{ p: 2, border: `2px solid ${grey[500]}`, borderTop: "none" }}>
           <PrimaryButton
+            onClick={handleConfirmOrders}
             sx={{
               textTransform: "none",
               fontWeight: "500",

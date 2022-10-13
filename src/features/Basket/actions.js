@@ -1,4 +1,4 @@
-import { ADD_TO_CART, DELETE_PRODUCT_FROM_CART, REMOVE_FROM_CART, SET_TO_CART } from "./actionTypes"
+import { ADD_TO_CART, DELETE_PRODUCT_FROM_CART, REMOVE_FROM_CART, RESET_CART, SET_TO_CART } from "./actionTypes"
 
 export const addToCart = (product) => ({
   type: ADD_TO_CART,
@@ -18,6 +18,10 @@ export const deleteProductFromCart = (product) => ({
 export const setToCart = (products) => ({
   type: SET_TO_CART,
   payload: products
+})
+
+export const resetCart = () => ({
+  type: RESET_CART
 })
 
 export const checkProductsInLocalStorage = () => (dispatch) => {
