@@ -167,6 +167,61 @@
     }
   ],
   "orders": [
-    
+    {
+      "totalPrice": 27519,
+      "totalCount": 31,
+      "providers": {
+        "Аксон": "Аксон",
+        "Лукашенко": "Лукашенко"
+      },
+      "items": {
+        "1": {
+          "id": 1,
+          "img": "https://market.starateli.ru/media/images/products/365h365_sonora_5_kg_a0MxzSH.png",
+          "price": 449,
+          "oldPrice": 499,
+          "discountValue": 25,
+          "name": "Рубероид РКП-350 ТУ, размер материала 1 х 10 м (10м2, 1 рулон)",
+          "category": 0,
+          "provider": "Аксон",
+          "count": 9
+        },
+        "2": {
+          "id": 2,
+          "img": "https://s0.rbk.ru/v6_top_pics/media/img/4/87/756218484007874.jpg",
+          "price": 1249,
+          "oldPrice": 299,
+          "discountValue": 25,
+          "name": "Акции против Лукашенко в мире",
+          "category": 1,
+          "provider": "Лукашенко",
+          "count": 6
+        },
+        "3": {
+          "id": 3,
+          "img": "https://market.starateli.ru/media/images/products/365h365_sonora_5_kg_a0MxzSH.png",
+          "price": 449,
+          "oldPrice": 499,
+          "discountValue": 25,
+          "name": "Рубероид РКП-350 ТУ, размер материала 1 х 10 м (10м2, 1 рулон)",
+          "category": 0,
+          "provider": "Аксон",
+          "count": 5
+        },
+        "4": {
+          "id": 4,
+          "img": "https://s0.rbk.ru/v6_top_pics/media/img/4/87/756218484007874.jpg",
+          "price": 1249,
+          "oldPrice": 299,
+          "discountValue": 25,
+          "name": "Акции против Лукашенко в мире",
+          "category": 1,
+          "provider": "Лукашенко",
+          "count": 11
+        }
+      },
+      "createdAt": "2022-10-14T10:42:37.162Z",
+      "id": 1
+    }
   ]
 }

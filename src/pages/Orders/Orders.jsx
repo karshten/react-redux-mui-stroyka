@@ -4,8 +4,18 @@ import { OrderProduct } from './OrderProduct';
 import { Grid } from '@mui/material';
 import { Hero } from './../../components/Hero/Hero';
 import orderHero from "img/order-intro.png"
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { getOrdersAsync } from '../../features/Orders/actions';
 
 export const Orders = () => {
+  const dispatch = useDispatch()
+  const orders = useSelector(state => state.orders.items)
+
+  useEffect(() => {
+    dispatch(getOrdersAsync())
+  }, [])
+
   return (
     <>
       <Hero
@@ -29,10 +39,9 @@ export const Orders = () => {
       <Container sx={{ maxWidth: '1160px' }} >
         <Box>
           <Grid container direction='column' >
-            <OrderProduct />
-            <OrderProduct />
-            <OrderProduct />
-            <OrderProduct />
+            {orders?.map(order => (
+              <OrderProduct {...order} key={order.id}/>
+            ))}
           </Grid>
         </Box>
       </Container>

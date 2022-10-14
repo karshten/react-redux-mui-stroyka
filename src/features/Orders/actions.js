@@ -5,9 +5,8 @@ export const setOrders = (orders) => ({
   payload: orders,
 })
 
-export const setIsLoading = (isLoading) => ({
-  type: SET_IS_LOADING,
-  payload: isLoading,
+export const setIsLoading = () => ({
+  type: SET_IS_LOADING
 })
 
 export const getOrdersAsync = () => async (dispatch) => {
@@ -18,7 +17,6 @@ export const getOrdersAsync = () => async (dispatch) => {
     const data = await response.json()
 
     dispatch(setOrders(data))
-    dispatch(setIsLoading(false))
 
   } catch (err) {
     throw new Error(err.message)
@@ -26,6 +24,7 @@ export const getOrdersAsync = () => async (dispatch) => {
 }
 
 export const addOrderAsync = (body) => async (dispatch) => {
+  console.log(body);
   try {
     dispatch(setIsLoading(true))
 
@@ -34,8 +33,6 @@ export const addOrderAsync = (body) => async (dispatch) => {
       body: JSON.stringify(body),
       headers: { "content-type": "application/json" }
     })
-
-    dispatch(setIsLoading(false))
 
   } catch (err) {
     throw new Error(err.message)

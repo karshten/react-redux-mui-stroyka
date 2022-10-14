@@ -1,17 +1,36 @@
 import React from 'react'
-import { Grid, Box, Typography, List, ListItem } from '@mui/material';
+import { Grid, Box, Typography } from '@mui/material';
 import { dark } from 'theme/colors';
 
-export const OrderProduct = () => {
+export const OrderProduct = ({ totalCount, totalPrice, providers, items }) => {
     return (
         <Box display='flex' sx={{ border: '1px solid #E8E9EA', mb: 2 }}>
-            <Grid item xs={2} display='flex' alignItems='center' p={2} justifyContent='center' >
-                <Box
-                    sx={{ objectFit: 'cover' }}
-                    maxHeight={120}
-                    component='img'
-                    maxWidth='100%'
-                    src="https://avatarko.ru/img/kartinka/33/multfilm_lyagushka_32117.jpg" />
+            <Grid
+                item
+                xs={2}
+                display='flex'
+                alignItems='center'
+                p={2}
+                justifyContent='center' >
+                {Object.keys(items).length === 1 ?
+                    <Box
+                        sx={{ objectFit: 'cover' }}
+                        maxHeight={120}
+                        component='img'
+                        maxWidth='100%'
+                        src={items["1"].img} />
+                    :
+                    "Подробнее"
+                }
+                {/* Object.keys(items).map((key) => {
+                        return <Box
+                            key={items[key].id}
+                            sx={{ objectFit: 'cover' }}
+                            maxHeight={120}
+                            component='img'
+                            maxWidth='50%'
+                            src={items[key].img} />
+                    }) */}
             </Grid>
             <Grid item xs={6}
                 borderLeft='1px solid #E8E9EA'
@@ -29,7 +48,10 @@ export const OrderProduct = () => {
                         fontSize: 16,
                         color: dark[600]
                     }}>
-                    Плита OSB-3 Kronospan 2500 х 1250 х 9 мм, хвойные породы
+                    {Object.keys(items).map((key, idx, arr) => {
+                        const addComa = arr.length - 1 !== idx ? "," : ""
+                        return items[key].name + addComa
+                    }).join('').slice(0, 50) + "..."}
                 </Typography>
                 <Typography
                     sx={{
@@ -37,7 +59,7 @@ export const OrderProduct = () => {
                         fontSize: 20,
                         color: dark[500]
                     }}>
-                    995 ₽
+                    {totalPrice} ₽
                 </Typography>
                 <Typography
                     sx={{
@@ -45,7 +67,7 @@ export const OrderProduct = () => {
                         fontSize: 16,
                         color: dark[600]
                     }}>
-                    2 шт.
+                    {totalCount} шт.
                 </Typography>
             </Grid>
             <Grid item xs={2} p={2} >

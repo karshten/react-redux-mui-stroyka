@@ -37,7 +37,7 @@ export const ProductsInformation = () => {
       createdAt: new Date()
     }))
     dispatch(resetCart())
-    localStorage.setItem('products', {})
+    localStorage.setItem('products', "")
     navigate('/thank')
   }
 

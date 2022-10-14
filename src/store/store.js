@@ -4,12 +4,14 @@ import thunk from "redux-thunk"
 import { productsByDiscountReducer } from "../features/Products/reducer"
 import { brandsReducer } from "../features/Brands/reducer"
 import { cartReducer } from "../features/Basket/reducer"
+import { ordersReducer } from "../features/Orders/reducer"
 
 const reducers = combineReducers({
   questions: questionsReducer,
   productsByDiscount: productsByDiscountReducer,
   brands: brandsReducer,
-  cart: cartReducer
+  cart: cartReducer,
+  orders: ordersReducer
 })
 
 export const store = createStore(
