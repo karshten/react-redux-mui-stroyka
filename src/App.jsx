@@ -15,7 +15,8 @@ import {
   Сatalog,
   Contacts,
   NotFound,
-  Thank
+  Thank,
+  OrderDescription
 } from "./pages"
 
 function App() {
@@ -47,6 +48,7 @@ function App() {
           <Route path="/refund" element={<Refund />} />
           <Route path="/basket" element={<Basket />} />
           <Route path="/orders" element={<Orders />} />
+          <Route path="/orders/:id" element={<OrderDescription />} />
           <Route path="/catalog" element={<Сatalog />} />
           <Route path="/contacts" element={<Contacts />} />
           <Route path="/thank" element={<Thank />} />

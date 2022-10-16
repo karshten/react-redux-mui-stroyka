@@ -4,10 +4,12 @@ import { dark } from 'theme/colors';
 import { PrimaryButton } from '../../components/Button/Button';
 import { format } from 'date-fns';
 import { ru } from 'date-fns/locale';
+import { useNavigate } from 'react-router-dom';
 
-export const OrderProduct = ({ totalCount, totalPrice, providers, items, createdAt }) => {
+export const OrderProduct = ({ totalCount, totalPrice, items, createdAt, id }) => {
     const orderKeys = Object.keys(items)
     const orderDate = format(new Date(createdAt), "dd MMMM", { locale: ru })
+    const navigate = useNavigate()
 
     return (
         <Box display='flex' sx={{ border: '1px solid #E8E9EA', mb: 2 }}>
@@ -50,7 +52,7 @@ export const OrderProduct = ({ totalCount, totalPrice, providers, items, created
                         fontSize: 16,
                         color: dark[600]
                     }}>
-                    {Object.keys(items).map((key, idx, arr) => {
+                    {orderKeys.map((key, idx, arr) => {
                         const addComa = arr.length - 1 !== idx ? "," : ""
                         return items[key].name + addComa
                     }).join('').slice(0, 100) + "..."}
@@ -69,7 +71,15 @@ export const OrderProduct = ({ totalCount, totalPrice, providers, items, created
                         fontSize: 16,
                         color: dark[600]
                     }}>
-                    {totalCount} шт.
+                    {totalCount} {(orderKeys.length <= 1 ? "шт" : "кол-во")}.
+                </Typography>
+                <Typography
+                    sx={{
+                        fontWeight: 500,
+                        fontSize: 16,
+                        color: dark[600]
+                    }}>
+                    {orderKeys[1] && `${orderKeys.length} шт уникальных продуктов.`}
                 </Typography>
             </Grid>
             <Grid item xs={2} p={2} >
@@ -106,7 +116,9 @@ export const OrderProduct = ({ totalCount, totalPrice, providers, items, created
                         Оплачен
                     </Typography>
                 </Box>
-                {items[orderKeys?.[1]] && <PrimaryButton sx={{ mt: 2 }}>Подробнее</PrimaryButton>}
+                {orderKeys.length > 1 &&
+                    <PrimaryButton onClick={() => navigate(`/orders/${id}`)} sx={{ mt: 2 }}>Подробнее</PrimaryButton>
+                }
             </Grid>
         </Box >
     )
