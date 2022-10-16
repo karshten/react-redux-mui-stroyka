@@ -2,9 +2,12 @@ import React from 'react'
 import { Grid, Box, Typography } from '@mui/material';
 import { dark } from 'theme/colors';
 import { PrimaryButton } from '../../components/Button/Button';
+import { format } from 'date-fns';
+import { ru } from 'date-fns/locale';
 
-export const OrderProduct = ({ totalCount, totalPrice, providers, items }) => {
+export const OrderProduct = ({ totalCount, totalPrice, providers, items, createdAt }) => {
     const orderKeys = Object.keys(items)
+    const orderDate = format(new Date(createdAt), "dd MMMM", { locale: ru })
 
     return (
         <Box display='flex' sx={{ border: '1px solid #E8E9EA', mb: 2 }}>
@@ -76,7 +79,7 @@ export const OrderProduct = ({ totalCount, totalPrice, providers, items }) => {
                         fontWeight: 700,
                         fontSize: '18px',
                     }}>
-                    Заказ от 24 мая
+                    Заказ от {orderDate}
                 </Typography>
                 <Typography sx={{
                     color: dark[600],
@@ -103,7 +106,7 @@ export const OrderProduct = ({ totalCount, totalPrice, providers, items }) => {
                         Оплачен
                     </Typography>
                 </Box>
-                {items[orderKeys?.[1]] && <PrimaryButton sx={{mt: 2}}>Подробнее</PrimaryButton>}
+                {items[orderKeys?.[1]] && <PrimaryButton sx={{ mt: 2 }}>Подробнее</PrimaryButton>}
             </Grid>
         </Box >
     )
