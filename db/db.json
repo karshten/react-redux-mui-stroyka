@@ -222,6 +222,28 @@
       },
       "createdAt": "2022-10-14T10:42:37.162Z",
       "id": 1
+    },
+    {
+      "totalPrice": 9992,
+      "totalCount": 8,
+      "providers": {
+        "Лукашенко": "Лукашенко"
+      },
+      "items": {
+        "4": {
+          "id": 4,
+          "img": "https://s0.rbk.ru/v6_top_pics/media/img/4/87/756218484007874.jpg",
+          "price": 1249,
+          "oldPrice": 299,
+          "discountValue": 25,
+          "name": "Акции против Лукашенко в мире",
+          "category": 1,
+          "provider": "Лукашенко",
+          "count": 8
+        }
+      },
+      "createdAt": "2022-10-16T13:58:29.402Z",
+      "id": 2
     }
   ]
 }

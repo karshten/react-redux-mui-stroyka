@@ -40,7 +40,7 @@ export const Orders = () => {
         <Box>
           <Grid container direction='column' >
             {orders?.map(order => (
-              <OrderProduct {...order} key={order.id}/>
+              <OrderProduct {...order} key={order?.id}/>
             ))}
           </Grid>
         </Box>

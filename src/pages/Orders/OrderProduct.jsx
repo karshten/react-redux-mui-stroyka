@@ -1,8 +1,11 @@
 import React from 'react'
 import { Grid, Box, Typography } from '@mui/material';
 import { dark } from 'theme/colors';
+import { PrimaryButton } from '../../components/Button/Button';
 
 export const OrderProduct = ({ totalCount, totalPrice, providers, items }) => {
+    const orderKeys = Object.keys(items)
+
     return (
         <Box display='flex' sx={{ border: '1px solid #E8E9EA', mb: 2 }}>
             <Grid
@@ -12,16 +15,12 @@ export const OrderProduct = ({ totalCount, totalPrice, providers, items }) => {
                 alignItems='center'
                 p={2}
                 justifyContent='center' >
-                {Object.keys(items).length === 1 ?
-                    <Box
-                        sx={{ objectFit: 'cover' }}
-                        maxHeight={120}
-                        component='img'
-                        maxWidth='100%'
-                        src={items["1"].img} />
-                    :
-                    "Подробнее"
-                }
+                <Box
+                    sx={{ objectFit: 'cover' }}
+                    maxHeight={120}
+                    component='img'
+                    maxWidth='100%'
+                    src={items[orderKeys?.[0]].img} />
                 {/* Object.keys(items).map((key) => {
                         return <Box
                             key={items[key].id}
@@ -51,7 +50,7 @@ export const OrderProduct = ({ totalCount, totalPrice, providers, items }) => {
                     {Object.keys(items).map((key, idx, arr) => {
                         const addComa = arr.length - 1 !== idx ? "," : ""
                         return items[key].name + addComa
-                    }).join('').slice(0, 50) + "..."}
+                    }).join('').slice(0, 100) + "..."}
                 </Typography>
                 <Typography
                     sx={{
@@ -87,21 +86,24 @@ export const OrderProduct = ({ totalCount, totalPrice, providers, items }) => {
                     34078988-0047
                 </Typography>
             </Grid>
-            <Grid item xs={2} p={2} >
-                <Typography sx={{
-                    color: dark[600],
-                    fontWeight: 700,
-                    fontSize: '16px',
-                }}>
-                    Статус
-                </Typography>
-                <Typography sx={{
-                    color: dark[600],
-                    fontWeight: 400,
-                    fontSize: '16px',
-                }}>
-                    Оплачен
-                </Typography>
+            <Grid item xs={2} p={2}>
+                <Box>
+                    <Typography sx={{
+                        color: dark[600],
+                        fontWeight: 700,
+                        fontSize: '16px',
+                    }}>
+                        Статус
+                    </Typography>
+                    <Typography sx={{
+                        color: dark[600],
+                        fontWeight: 400,
+                        fontSize: '16px',
+                    }}>
+                        Оплачен
+                    </Typography>
+                </Box>
+                {items[orderKeys?.[1]] && <PrimaryButton sx={{mt: 2}}>Подробнее</PrimaryButton>}
             </Grid>
         </Box >
     )
