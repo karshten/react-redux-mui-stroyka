@@ -2,8 +2,10 @@ import { Typography, Box, Button } from "@mui/material";
 import React from "react";
 import { PrimaryButton } from "../../components/Button/Button";
 import checkCircle from "icons/checkCircle.svg"
+import { useNavigate } from "react-router-dom";
 
 export const Thank = () => {
+  const navigate = useNavigate()
   return (
     <Box
       sx={{
@@ -31,7 +33,7 @@ export const Thank = () => {
       >
         Ваша заявка принята. Мы свяжемся с вами в ближайшее время
       </Typography>
-      <PrimaryButton sx={{ mt: 2 }}>Перейти на главную</PrimaryButton>
+      <PrimaryButton onClick={() => navigate('/')} sx={{ mt: 2 }}>Перейти на главную</PrimaryButton>
     </Box>
   );
 };
