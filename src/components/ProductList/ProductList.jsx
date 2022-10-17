@@ -8,7 +8,7 @@ import { useSelector } from "react-redux"
 import plus from "icons/plus.svg"
 import minus from "icons/minus.svg"
 
-export const ProductList = ({ items, title, onClick, btnText }) => {
+export const ProductList = ({ items, title, onClick, btnText, children }) => {
   const cartItems = useSelector((state) => state.cart?.items)
 
   return (
@@ -22,7 +22,7 @@ export const ProductList = ({ items, title, onClick, btnText }) => {
         </SecondaryButtonIcon>
       </Box>
       <Box>
-        <Grid container spacing={2}>
+        {children ?? <Grid container spacing={2}>
           {items?.map((item) => (
             <Grid item xs={6} key={item.id}>
               <Box display="flex" sx={{ border: "1px solid #E8E9EA" }}>
@@ -140,7 +140,7 @@ export const ProductList = ({ items, title, onClick, btnText }) => {
               </Box>
             </Grid>
           ))}
-        </Grid>
+        </Grid>}
       </Box>
     </Box>
   )
